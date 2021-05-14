@@ -1,5 +1,5 @@
 from requests_html import HTMLSession
-from datetime import date, time
+from datetime import date
 import csv
 import re
 import os
@@ -18,7 +18,7 @@ head = ['Shape', 'Price', 'Size', 'Cut', 'Color', 'Grade', 'certi']
 def pages():
     li = []
     url = 'https://www.dimendscaasi.com/loose-diamonds/?numined_vendor=548&limits=12&pagecount='
-    pages_want_to_scrape = 5
+    pages_want_to_scrape = 500
     
     for i in range(pages_want_to_scrape):
         url_li = li.append(url + str(i))
@@ -32,6 +32,7 @@ def get_session():
     for each in url_list:
         r = session.get(each)
         parse(r)
+
 
 
 # gets the required fields, if they exist
@@ -85,5 +86,5 @@ def main():
     get_session()
 
 
-if __name__='__main__':
+if __name__="__main__":
     main()
